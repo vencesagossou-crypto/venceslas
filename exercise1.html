@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manipulation de chaînes de caractères (String)
+    </title>
+</head>
+<body>
+  
+    <h1>Exercice 1 : Manipulation de chaînes</h1>
+    <input type="text" id="inputString" placeholder="Tapez une chaîne" oninput="processString()">
+    <p id="lengthResult"></p>
+    <p id="substringResult"></p>
+
+
+    <script>
+        function processString() {
+            const str = document.getElementById("inputString").value;
+
+            // Calcul de la longueur
+            const length = str.length;
+            document.getElementById("lengthResult").textContent = "Longueur : " + length;
+
+            // Extraction des 3 premiers caractères
+            const substring = str.substring(0, 3);
+            document.getElementById("substringResult").textContent = "Trois premiers caractères : " + substring;
+        }
+    </script>
+
+
+    
+</body>
+</html>

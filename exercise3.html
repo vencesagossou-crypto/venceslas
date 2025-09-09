@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manipulation de dates (Date)</title>
+</head>
+<body>
+    <h1>Exercice 3 : Manipulation de dates</h1>
+    <form onsubmit="return false";>
+        <label for="dateInput">Entrez une date (JJ-MM-AAAA) :</label>
+        <input type="text" id="dateInput" placeholder="ex: 28-09-2023" oninput="processDate()">
+    </form>
+    <p id="day"></p>
+    <p id="month"></p>
+    <p id="year"></p>
+    <p id="diffDays"></p>
+
+
+
+    <script>
+        function processDate() {
+            const input = document.getElementById("dateInput").value;
+            const parts = input.split('-');
+            if(parts.length !== 3) {
+                clearDisplay();
+                return;
+            }
+            const day = parseInt(parts[0], 10);
+            const month = parseInt(parts[1], 10) - 1; // Mois indexé à 0 en JS
+            const year = parseInt(parts[2], 10);
+
+            const dateObj = new Date(year, month, day);
+            if (isNaN(dateObj.getTime())) {
+                clearDisplay();
+                return;
+            }
+
+            document.getElementById('day').textContent = "Jour : " + dateObj.getDate();
+            document.getElementById('month').textContent = "Mois : " + (dateObj.getMonth() + 1);
+            document.getElementById('year').textContent = "Année : " + dateObj.getFullYear();
+
+            // Calcul différence en jours
+            const today = new Date();
+            const diffTime = today - dateObj; // différence en millisecondes
+            const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+            document.getElementById('diffDays').textContent = "Différence en jours avec aujourd'hui : " + diffDays;
+        }
+
+        function clearDisplay() {
+            document.getElementById('day').textContent = "";
+            document.getElementById('month').textContent = "";
+            document.getElementById('year').textContent = "";
+            document.getElementById('diffDays').textContent = "";
+        }
+    </script>
+
+</body>
+</html>

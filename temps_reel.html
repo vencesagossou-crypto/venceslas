@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Horloge en temps réel (Date)</title>
+</head>
+<body>
+
+    <h2>Exercice 4 : Horloge en temps réel</h2>
+    <input type="text" id="clock" readonly>
+
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            const timeString = hours + ":" + minutes + ":" + seconds;
+            document.getElementById('clock').value = timeString;
+
+            setTimeout(updateClock, 1000);
+        }
+
+        updateClock(); // Démarrer l'horloge
+    </script>
+    
+</body>
+</html>
